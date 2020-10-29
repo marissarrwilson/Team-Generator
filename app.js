@@ -8,21 +8,98 @@ const Intern = require("./test/Intern");
 
 const teamMembers = [];
 let manager;
-let teamTitle;
+let teamName;
 
-function teamData() {
+function managerInfo() {
     inquirer.prompt([
         { // team name
             type: "input",
             message: "What is the name of this team?",
-            name: "teamTitle"
+            name: "teamName"
         },
         { // manager
             type: "input",
-            message: "Who is the manager of this team?",
+            message: "Who is the team manager?",
             name: "managerName"
         },
-    ])
+        { // manager ID
+            type: "input",
+            message: "What is their ID?",
+            name: "managerID"
+        },
+        { // manager email
+            type: "input",
+            message: "What is the manager's email?",
+            name: "managerEmail"
+        },
+        { // manager phone
+            type: "input",
+            message: "What is the manager's phone number?",
+            name: "managerPhone"
+        }
+    ]).then(managerResponse =>{
+        manager = new Manager(managerResponse.managerName, managerResponse.managerID, managerResponse.managerEmail, managerResponse.managerPhone);
+        teamName = managerResponse.teamName;
+        console.log("Responses recorded! We will now ask for your team's employee details.")
+        employeeInfo();
+    });
+}
+
+// repeat if need for more employees
+function employeeInfo() {
+    inquirer.prompt([
+        { //role
+            type: "list",
+            message: "What is this employee's role?",
+            name: "employeeRole",
+            choices: ["Engineer", "Intern"]
+        },
+        { // employee name
+            type: "input",
+            message: "What is this employee's name?",
+            name: "employeeName"
+        },
+        { // employee ID
+            type: "input",
+            message: "What is this employee's ID?",
+            name: "employeeID"
+        },
+        { // employee email
+            type: "input",
+            message: "What is this employee's email?",
+            name: "employeeEmail"
+        },
+        { // engineer github
+            type: "input",
+            message: "What is the engineer's GitHub username?",
+            name: "github",
+            when: (userInput) => userInput.employeeRole === "Engineer"
+        },
+        { // intern school
+            type: "input",
+            message: "What school is the intern attending?",
+            name: "school",
+            when: (userInput) => userInput.employeeRole === "Intern"
+        },
+        {
+            type: "confirm",
+            message: "Would you like to add another member to your team?",
+            name: "newEmployee"
+        }
+    ]).then( response => {
+        if (response.employeeRole === "Intern"){
+            const employee = new Intern(response.employeeName, response.employeeID, response.employeeEmail, response.school);
+            teamMembers.push(employee);
+        } else if (response.employeeRole === "Engineer"){
+            const employee = new Engineer(response.employeeName, response.employeeID, response.employeeEmail, response.github);
+            teamMembers.push(employee)
+        }
+        if (response.newEmployee === true){
+            employeeInfo();
+        } else {
+            
+        }
+    })
 }
 
 
