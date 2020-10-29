@@ -1,9 +1,30 @@
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./test/Intern");
+
+const teamMembers = [];
+let manager;
+let teamTitle;
+
+function teamData() {
+    inquirer.prompt([
+        { // team name
+            type: "input",
+            message: "What is the name of this team?",
+            name: "teamTitle"
+        },
+        { // manager
+            type: "input",
+            message: "Who is the manager of this team?",
+            name: "managerName"
+        },
+    ])
+}
+
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
