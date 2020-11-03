@@ -104,7 +104,7 @@ function employeeInfo() {
             managerCard = managerCard.replace('{{role}}', manager.getRole());
             managerCard = managerCard.replace('{{id}}', manager.getId());
             managerCard = managerCard.replace('{{email}}', manager.getEmail());
-            managerCard = managerCard.replace('{{managerPhone}}', manager.getPhoneNumber());
+            managerCard = managerCard.replace('{{managerPhone}}', manager.getManagerPhone());
 
             var cards = managerCard;
             for (var i = 0; i < teamMembers.length; i++) {
