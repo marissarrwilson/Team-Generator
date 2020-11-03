@@ -97,16 +97,32 @@ function employeeInfo() {
         if (response.newEmployee === true){
             employeeInfo();
         } else {
-            
+            var main = fs.readFileSync('./templates/main.html', 'utf8');
+            main = main.replace(/{{teamName}}/g, teamName);
+            var managerCard = fs.readFileSync('./templates/Manager.html', 'utf8');
+            managerCard = managerCard.replace('{{name}}', manager.getName());
+            managerCard = managerCard.replace('{{role}}', manager.getRole());
+            managerCard = managerCard.replace('{{id}}', manager.getId());
+            managerCard = managerCard.replace('{{email}}', manager.getEmail());
+            managerCard = managerCard.replace('{{school}}', manager.getSchool());
+            return internCard;
+        } if (employee.getRole() === "Engineer"){
+            var engineerCard = fs.readFileSync('./templates.Engineer.html', 'utf8');
+            engineerCard = engineerCard.replace('{{name}}', employee.getName());
+            engineerCard = engineerCard.replace('{{role}}', employee.getRole());
+            engineerCard = engineerCard.replace('{{id}}', employee.getId());
+            engineerCard = engineerCard.replace('{{email}}', employee.getEmail());
+            engineerCard = engineerCard.replace('{{github}}', employee.getGithub());
+            return engineerCard;
         }
     })
 }
 
 
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+// const OUTPUT_DIR = path.resolve(__dirname, "output");
+// const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
+// const render = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
