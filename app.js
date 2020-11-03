@@ -99,7 +99,7 @@ function employeeInfo() {
         } else {
             var main = fs.readFileSync('./templates/main.html', 'utf8');
             main = main.replace(/{{teamName}}/g, teamName);
-            var managerCard = fs.readFileSync('templates/Manager.html', 'utf8');
+            var managerCard = fs.readFileSync('templates/manager.html', 'utf8');
             managerCard = managerCard.replace('{{name}}', manager.getName());
             managerCard = managerCard.replace('{{role}}', manager.getRole());
             managerCard = managerCard.replace('{{id}}', manager.getId());
@@ -121,7 +121,7 @@ function employeeInfo() {
 
 function renderEmployee(employee) {
     if (employee.getRole() === "Intern") {
-        var internCard = fs.readFileSync('./templates/Intern.html', 'utf8');
+        var internCard = fs.readFileSync('./templates/intern.html', 'utf8');
         internCard = internCard.replace('{{name}}', employee.getName());
         internCard = internCard.replace('{{role}}', employee.getRole());
         internCard = internCard.replace('{{id}}', employee.getId());
@@ -129,7 +129,7 @@ function renderEmployee(employee) {
         internCard = internCard.replace('{{school}}', employee.getSchool());
         return internCard;
     } else if (employee.getRole() === "Engineer") {
-        var engineerCard = fs.readFileSync('./templates.Engineer.html', 'utf8');
+        var engineerCard = fs.readFileSync('./templates.engineer.html', 'utf8');
         engineerCard = engineerCard.replace('{{name}}', employee.getName());
         engineerCard = engineerCard.replace('{{role}}', employee.getRole());
         engineerCard = engineerCard.replace('{{id}}', employee.getId());
