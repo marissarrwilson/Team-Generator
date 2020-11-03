@@ -129,7 +129,7 @@ function renderEmployee(employee) {
         internCard = internCard.replace('{{school}}', employee.getSchool());
         return internCard;
     } else if (employee.getRole() === "Engineer") {
-        var engineerCard = fs.readFileSync('./templates.engineer.html', 'utf8');
+        var engineerCard = fs.readFileSync('./templates/engineer.html', 'utf8');
         engineerCard = engineerCard.replace('{{name}}', employee.getName());
         engineerCard = engineerCard.replace('{{role}}', employee.getRole());
         engineerCard = engineerCard.replace('{{id}}', employee.getId());
