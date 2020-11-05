@@ -20,6 +20,7 @@ Git clone this repository and NPM install inquirer to use.
 Type in "node app.js" to start up the application. Answer the prompts in the integrated terminal to generate your customized team!
 
 ## Screenshots
+![Terminal View](images/terminal.png)
 
 ## Credits
 Individual work by me, Marissa Wilson, with the help of...
