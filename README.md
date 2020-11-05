@@ -27,8 +27,6 @@ Individual work by me, Marissa Wilson, with the help of...
 
 Instructors Fil and Daniel
 Boolean Bros
-Useful Links:
-https://github.com/preyx/bchw7-readme/blob/master/
 
 ## Questions
 For any questions regarding this project, I can be reached at wilson.marissarose@gmail.com.
