@@ -1,5 +1,4 @@
 # Team-Generator
-Custom team html generator
 
 ## Table of Contents
 
